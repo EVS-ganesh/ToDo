@@ -51,7 +51,7 @@ function TodoActions() {
 
     // search tasks
     todoA.searchTasks = function (event) {
-        debugger;
+
         let previousTab = TodoS.previousTab ? TodoS.previousTab.attr("data") : "AllTasks";
         let Tasks = TodoH.taskFilterer(previousTab,TodoS.getTaskData("alltasks"));
         let TaskName = event.target.value;
@@ -89,7 +89,6 @@ function TodoActions() {
 
             tasks = givenTasks ? givenTasks : tasks;
 
-            debugger;
             tasks = TodoH.taskSorter(tasks);
 
         // refresh the container

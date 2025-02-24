@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="todo.css">
+</head>
+
+<body>
+
+    <!-- task header -->
+    <div class="td-header">
+        <div class="td-menu-box">
+            <img src="images/menu-dark.png" alt="menu" class="td-menu-logo" onclick="TD_Actions.toggleMenu()">
+            <h2 class="td-heading-txt">ToDo</h2>
+        </div>
+        <div class="td-search-box">
+            <div class="td-search-bar">
+                <label for="td_search_tsk">
+                    <img src="images/search.png" alt="search" class="td-search-logo">
+                </label>
+                <input type="text" class="td-search-input" id="td_search_tsk" placeholder="Enter Task Name" onkeyup="TD_Actions.searchTasks(event)">
+            </div>
+        </div>
+        <!-- <div class="td-logo-box">
+            <img src="" alt="" class="td-logo">
+        </div> -->
+    </div>
+
+    <!-- task body -->
+    <div class="td-list-container">
+
+        <div class="td-menu-container">
+            <h4 class="td-menu-heading-txt">Tasks</h4>
+            <nav class="td-navigator">
+                <ul class="td-ul" onclick="TD_Actions.changeTab(event)">
+                    <li class="td-list" tabindex="0" data="AllTasks" id="All_TS">All Tasks</li>
+                    <li class="td-list" tabindex="0" data="Primary" id="Primary_TS">Primary Tasks</li>
+                    <li class="td-list" tabindex="0" data="Secondary" id="Secondary_TS">Secondary Tasks</li>
+                    <li class="td-list" tabindex="0" data="Incomplete" id="InComplete_TS">Incomplete Tasks</li>
+                    <li class="td-list" tabindex="0" data="Completed" id="Completed_TS">Completed Tasks</li>
+                    <li class="td-list" tabindex="0" data="Deleted" id="Deleted_TS">Deleted Tasks</li>
+                    <li class="td-list" tabindex="0" data="Duplicate" id="Duplicate_TS">Duplicate Tasks</li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="td-task-container">
+
+            <div class="td-task-creator-box" id="task_creator">
+                <div class="task-creator" tabindex="0">
+                    <input type="text" class="add-task-input" id="input_task" onkeyup="TD_Actions.addTask(event)" placeholder="Enter New Task">
+                </div>
+                <img src="images/add.png" class="td-add-task" onclick="TD_Actions.addTask(event)" id="add_task">
+            </div>
+
+            <div class="td-task-store" id="task_store">
+            </div>
+        </div>
+
+    </div>
+
+    <!-- <div class="td-footer">
+        
+    </div> -->
+</body>
+<script src="todo-data.js"></script>
+<script src="todo-helper.js"></script>
+<script src="todo-action.js"></script>
+
+</html>

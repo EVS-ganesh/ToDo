@@ -51,7 +51,7 @@ function TodoActions() {
 
     // search tasks
     todoA.searchTasks = function (event) {
-        debugger;
+
         let previousTab = TodoS.previousTab ? TodoS.previousTab.attr("data") : "AllTasks";
         let Tasks = TodoH.taskFilterer(previousTab,TodoS.getTaskData("alltasks"));
         let TaskName = event.target.value;
@@ -78,6 +78,7 @@ function TodoActions() {
         }else{
            $("#task_creator").hide();
         }
+        $(".td-list-container .td-task-store").addClass("on-all-tasks");
         todoA.generateAllTask(tabName);
     }
 
@@ -89,15 +90,12 @@ function TodoActions() {
 
             tasks = givenTasks ? givenTasks : tasks;
 
-            debugger;
             tasks = TodoH.taskSorter(tasks);
 
         // refresh the container
         Container.html("");
-        $(".td-list-container .td-task-store").css({
-            "height": "60%",
-            "width": "70%"
-        });
+        $(".td-list-container .td-task-store").removeClass("on-all-tasks-empty");
+        $(".td-list-container .td-task-store").addClass("on-all-tasks");
 
         if (tasks.length) {
             tasks.forEach((task) => {
@@ -110,8 +108,10 @@ function TodoActions() {
 
                 let taskEle = !task.deleted ? `
                   <div class="td-task" id="${ID}">
-                     <img src="images/${complete}.png" title="task completion" onclick="TD_Actions.toggleCompletion(event)" class="tsk-actions tsk-radio">
-                      <p class="tsk-display" id="${ID}_name">${Name}</p>
+                     <div class="tsk-disp-comp"> 
+                         <img src="images/incomplete.png" title="task completion" class="tsk-actions tsk-radio incomplete-tsk" onclick="TD_Actions.toggleCompletion(event)">
+                         <p class="tsk-display" id="${ID}_name">${Name}</p>
+                     </div>
                      <div class="tsk-actions-ped">
                              <img title="edited" src="images/done.png" alt="" onclick="" class="tsk-actions tsk-done hide">
                              <img title="prioritize" src="images/${taskType}.png" alt="" onclick="TD_Actions.togglePrimary(event)" class="tsk-actions tsk-star">
@@ -135,16 +135,14 @@ function TodoActions() {
             })
         }else{
 
-            $(".td-list-container .td-task-store").css({
-                "height": "90%",
-                "width": "90%"
-            });
+            $(".td-list-container .td-task-store").removeClass("on-all-tasks");
+            $(".td-list-container .td-task-store").addClass("on-all-tasks-empty");
 
             tasksTab = tasksTab == "AllTasks" ? "Common" : tasksTab; 
 
             let content = `
                <div class="empty-tasks">
-                   <img src="images/notasks.png" class="no-tasks">
+                   <div class="no-tasks"></div>
                    <p class="not-found">No ${tasksTab} tasks.</p>
                </div>
              `
@@ -157,22 +155,23 @@ function TodoActions() {
 
         if (event.type === "click" || (event.type === "keyup" && event.keyCode === 13)) {
 
-            $(".td-list-container .td-task-store").css({
-                "height": "60%",
-                "width": "70%"
-            });
-
-            let Container = $("#task_store");
-            Container.find(".empty-tasks").remove(); 
             let Name = $("#input_task").val();
-            let ID = "tsk_" + Date.now();
 
             if (TodoH.validateTaskName(Name)) {
 
+                let Container = $("#task_store");
+                Container.find(".empty-tasks").remove();
+                let ID = "tsk_" + Date.now();
+
+                $(".td-list-container .td-task-store").removeClass("on-all-tasks-empty");
+                $(".td-list-container .td-task-store").addClass("on-all-tasks");
+
                 let task = `
           <div class="td-task secondary-task" id="${ID}">
-             <img src="images/incomplete.png" title="task completion" class="tsk-actions tsk-radio incomplete-tsk" onclick="TD_Actions.toggleCompletion(event)">
-             <p class="tsk-display" id="${ID}_name">${Name}</p>
+             <div class="tsk-disp-comp"> 
+                 <img src="images/incomplete.png" title="task completion" class="tsk-actions tsk-radio incomplete-tsk" onclick="TD_Actions.toggleCompletion(event)">
+                 <p class="tsk-display" id="${ID}_name">${Name}</p>
+             </div>
              <div class="tsk-actions-ped">
                      <img title="edited" src="images/done.png" alt="" onclick="" class="tsk-actions tsk-done hide">
                      <img title="prioritize" src="images/secondary.png" alt="" onclick="TD_Actions.togglePrimary(event)" class="tsk-actions tsk-star">
@@ -213,16 +212,14 @@ function TodoActions() {
 
        let Container = $("#task_store");
         if(!Container[0].children.length){
-            $(".td-list-container .td-task-store").css({
-                "height": "90%",
-                "width": "90%"
-            });
+            $(".td-list-container .td-task-store").removeClass("on-all-tasks");
+            $(".td-list-container .td-task-store").addClass("on-all-tasks-empty");
 
             tasksTab = tasksTab == "AllTasks" ? "Common" : tasksTab; 
 
             let content = `
                <div class="empty-tasks">
-                   <img src="images/notasks.png" class="no-tasks">
+                   <div class="no-tasks"></div>
                    <p class="not-found">No ${tasksTab} tasks.</p>
                </div>
              `
@@ -242,14 +239,12 @@ function TodoActions() {
 
         let Container = $("#task_store");
         if(!Container[0].children.length){
-            $(".td-list-container .td-task-store").css({
-                "height": "90%",
-                "width": "90%"
-            });
+            $(".td-list-container .td-task-store").removeClass("on-all-tasks");
+            $(".td-list-container .td-task-store").addClass("on-all-tasks-empty");
 
             let content = `
                <div class="empty-tasks">
-                   <img src="images/notasks.png" class="no-tasks">
+                   <div class="no-tasks"></div>
                    <p class="not-found">No ${tasksTab} tasks.</p>
                </div>
              `
@@ -269,13 +264,13 @@ function TodoActions() {
 
         let Container = $("#task_store");
         if(!Container[0].children.length){
-            $(".td-list-container .td-task-store").css({
-                "height": "90%",
-                "width": "90%"
-            });
+
+            $(".td-list-container .td-task-store").removeClass("on-all-tasks");
+            $(".td-list-container .td-task-store").addClass("on-all-tasks-empty");
+
             let content = `
                <div class="empty-tasks">
-                   <img src="images/notasks.png" class="no-tasks">
+                   <div class="no-tasks"></div>
                    <p class="not-found">No ${tasksTab} tasks.</p>
                </div>
              `

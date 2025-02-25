@@ -28,7 +28,7 @@ function TodoHelper() {
     }
 
     todoH.validateTaskName = function (taskName){
-        return /^(?!.* {2})[A-Za-z0-9 ]{1,100}$/.test(taskName);
+        return /^(?!.* {2})(?! *$)[A-Za-z0-9 ]{1,100}$/.test(taskName);
     }
 
     todoH.taskSorter = function (tasks){

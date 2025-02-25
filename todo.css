@@ -341,7 +341,7 @@ input{
 
 .td-task-container .td-task-store .td-task{
     flex-grow: 0;
-    height: 35px;
+    min-height: 35px;
     width: 600px;
     border-radius: 15px;
     color: var(--primary2);

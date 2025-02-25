@@ -41,6 +41,11 @@ input{
     caret-color: var(--primary1);
 }
 
+
+/* desk-tops view */
+
+
+
 /* header component */
 
 
@@ -82,7 +87,7 @@ input{
 /* search */
 .td-header .td-search-box{
     height: 100%;
-    width: 50%;
+    width: 500px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -92,8 +97,8 @@ input{
 
 .td-search-box .td-search-bar {
     height: 70%;
-    width: 5%;
-    padding-left: 1%;
+    width: 35px;
+    padding-left: 7px;
     display: flex;
     align-items: center;
     background-color: var(--secondary1);
@@ -102,7 +107,7 @@ input{
 }
 
 .td-search-box .td-search-bar:hover {
-    width: 70%;
+    width: 400px;
 }
 
 .td-search-box .td-search-bar .td-search-input {
@@ -119,7 +124,7 @@ input{
 .td-search-box .td-search-bar:hover .td-search-input {
     visibility: visible;
     opacity: 1;
-    width: 80%;
+    width: 300px;
 }
 
 
@@ -143,6 +148,7 @@ input{
 .td-list-container{
     width: 100%;
     height: calc(100% - 50px);
+    min-height: 600px;
     display: flex;
 }
 
@@ -164,13 +170,13 @@ input{
 }
 
 @keyframes containerinc {
-    from { width: 80%; }
-    to   { width: 95%; }
+    from { width: 75%; }
+    to   { width: 90%; }
 }
 
 @keyframes containerdec {
-    from { width: 95%; }
-    to   { width: 80%; }
+    from { width: 90%; }
+    to   { width: 75%; }
 }
 
 /* Ensure final positions persist after animation */
@@ -195,9 +201,10 @@ input{
 
 
 .td-list-container .td-menu-container{
-    width: 15%;
+    width: 200px;
     margin: 35px 0px 0px -227px; /* 15px */
-    height: 90%;
+    height: calc(100% - 70px);
+    min-height: 600px;
     border-radius: 10px;
     background-color: var(--menu1);
     box-shadow: 0px 1px 5px 1px darkgray;
@@ -244,7 +251,7 @@ input{
 /* container tasks */
 
 .td-list-container .td-task-container{
-    width: calc(100% - 5%); /* calc(100% - 20%); */  
+    width: 90%;
     height: 90%;
     margin: auto;
     border-radius: 10px;
@@ -262,7 +269,7 @@ input{
 }
 
 .td-task-creator-box .task-creator{
-    width: 60%;
+    width: 400px;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -290,16 +297,16 @@ input{
 }
 
 .td-list-container .td-task-store{
-    height: 60%;
-    width: 70%;
+    height: auto;
+    width: 90%;
     margin: auto;
     margin-top: 20px;
+    max-height: 500px;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow-y: scroll;
-    padding: 5%;
 }
 
 /* empty container */
@@ -317,6 +324,10 @@ input{
 .td-task-store .empty-tasks .no-tasks {
     height: 400px;
     width: 600px;
+    background-image: url("images/notasks.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     border: 10px solid white;
     border-radius: 25px;
 }
@@ -329,16 +340,26 @@ input{
 /* task */
 
 .td-task-container .td-task-store .td-task{
-    height: 36px !important;
-    width: 90%;
+    flex-grow: 0;
+    height: 35px;
+    width: 600px;
     border-radius: 15px;
     color: var(--primary2);
     background-color: var(--secondary1);
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     margin-top: 15px;
     padding-right: 10px;
+}
+
+.td-task-store .td-task .tsk-disp-comp{
+    width: 50%;
+    height: 100%;
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .td-task .tsk-actions{
@@ -352,8 +373,8 @@ input{
 
 .td-task .tsk-display{
     height: 25px;
-    width: 70%;
-    padding-left: 5px;
+    width: 200px;
+    padding-left: 25px;
     line-height: 25px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -371,7 +392,7 @@ input{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 10%;
+    width: 100px;
 }
 
 .td-task:hover >  .tsk-actions-ped{
@@ -426,10 +447,563 @@ input{
     padding-left: 15px;
 }
 
+/* classes on switching */
+
+.td-task-container .on-all-tasks{
+   height: 500px;
+   width: 70%;
+}
+
+.td-task-container .on-all-tasks-empty{
+   height: 600px;
+    width: 90%;
+}
 
 
 
-  
+
+
+
+/* tab view */
+
+@media only screen and (max-width: 1150px) and (min-width: 900px){
+
+    /* header */
+    .td-header .td-menu-box{
+        height: 100%;
+        width: 130px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+
+
+    /* container */
+
+    /* menu */
+
+    .td-list-container .td-menu-container{
+        width: 18%;
+        margin: 35px 0px 0px -18%;
+        height: calc(100% - 70px);
+        min-height: 600px;
+        border-radius: 10px;
+        background-color: var(--menu1);
+        box-shadow: 0px 1px 5px 1px darkgray;
+    }
+
+    .td-menu-container .td-navigator{
+        width: 100%;
+        height: 50%;
+        text-align: left;
+        margin-top: 20px;
+    }
+
+    .td-navigator .td-ul{
+        width: 90%;
+        padding-left: 20px;
+    }
+
+    .td-navigator .td-ul li{
+        list-style-type: none;
+        padding: 5px;
+        margin-top: 5px;
+        border-radius: 7px;
+        cursor: pointer;
+    }
+
+    @keyframes menuopen {
+        from { margin-left: -18%; }
+        to   { margin-left: 15px; }
+    }
+
+    @keyframes menuclose {
+        from { margin-left: 15px; }
+        to   { margin-left: -18%; }
+    }
+
+    @keyframes containerinc {
+        from { width: 75%; }
+        to   { width: 90%; }
+    }
+
+    @keyframes containerdec {
+        from { width: 90%; }
+        to   { width: 75%; }
+    }
+
+    /* container */
+
+    .td-list-container .td-task-store{
+        height: auto;
+        width: 80%;
+        margin: auto;
+        margin-top: 20px;
+        max-height: 500px;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow-y: scroll;
+    }
+
+    .td-task-store .empty-tasks {
+        height: 100%;
+        width: 100%;
+        border-radius: 25px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .td-task-container .td-task-store .td-task{
+        width: 80%;
+    }
+
+    .td-task-creator-box .task-creator .add-task-input{
+        width: 85%;
+        font-size: 1.1em;
+        color: var(--secondary2);
+        border: none;
+    }
+
+    .td-task-store .empty-tasks .no-tasks {
+        height: 300px;
+        width: 450px;
+        border: 10px solid white;
+        border-radius: 25px;
+    }
+
+    .td-task-store .empty-tasks .not-found{
+        padding: 20px;
+        font-size: 1.8rem;
+    }
+
+
+    /* classes on switching */
+
+    .td-task-container .on-all-tasks{
+        height: 500px;
+        width: 90%;
+    }
+
+    .td-task-container .on-all-tasks-empty{
+        height: 600px;
+        width: 95%;
+    }
+}
+
+
+
+
+
+
+/* mini tab view 1*/
+
+@media only screen and (max-width: 899px) and (min-width: 720px){
+    /* header */
+    .td-header .td-menu-box{
+        height: 100%;
+        width: 130px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    /* container */
+
+    .td-task-creator-box .task-creator .add-task-input{
+        width: 83%;
+        font-size: 1.1em;
+        color: var(--secondary2);
+        border: none;
+    }
+
+    /* menu */
+
+    .td-list-container .td-menu-container{
+        width: 170px;
+        margin: 35px 0px 0px -180px;
+        height: calc(100% - 70px);
+        min-height: 600px;
+        border-radius: 10px;
+        background-color: var(--menu1);
+        box-shadow: 0px 1px 5px 1px darkgray;
+    }
+
+    .td-menu-container .td-navigator{
+        width: 100%;
+        height: 50%;
+        text-align: left;
+        margin-top: 20px;
+    }
+
+    .td-navigator .td-ul{
+        width: 90%;
+        padding-left: 20px;
+    }
+
+    .td-navigator .td-ul li{
+        list-style-type: none;
+        padding: 5px;
+        margin-top: 5px;
+        border-radius: 7px;
+        cursor: pointer;
+    }
+
+    @keyframes menuopen {
+        from { margin-left: -180px; }
+        to   { margin-left: 15px; }
+    }
+
+    @keyframes menuclose {
+        from { margin-left: 15px; }
+        to   { margin-left: -180px; }
+    }
+
+    @keyframes containerinc {
+        from { width: 70%; }
+        to   { width: 90%; }
+    }
+
+    @keyframes containerdec {
+        from { width: 90%; }
+        to   { width: 70%; }
+    }
+
+    /* container */
+
+    .td-task-store .empty-tasks {
+        height: 100%;
+        width: 100%;
+        border-radius: 25px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .td-task-container .td-task-store .td-task{
+        width: 85%;
+    }
+
+    .td-task-creator-box .task-creator{
+        width: 300px;
+    }
+
+    .td-task-store .empty-tasks .no-tasks {
+        height: 217px;
+        width: 350px;
+        border: 10px solid white;
+        border-radius: 25px;
+    }
+
+    .td-task-store .empty-tasks .not-found{
+        padding: 20px;
+        font-size: 1.6rem;
+    }
+
+
+    /* classes on switching */
+
+    .td-task-container .on-all-tasks{
+        height: 500px;
+        width: 80%;
+    }
+
+    .td-task-container .on-all-tasks-empty{
+        height: 600px;
+        width: 90%;
+    }
+}
+
+
+
+
+
+
+
+/* mini tab view 2 */
+
+@media only screen and (max-width: 719px) and (min-width: 600px){
+    /* header */
+    .td-header .td-menu-box{
+        height: 100%;
+        width: 130px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    /* container */
+
+    .td-task-creator-box .task-creator .add-task-input{
+        width: 80%;
+        font-size: 1.1em;
+        color: var(--secondary2);
+        border: none;
+    }
+
+    /* menu */
+
+    .td-list-container .td-menu-container{
+        width: 170px;
+        margin: 35px 0px 0px -180px;
+        height: calc(100% - 70px);
+        min-height: 600px;
+        border-radius: 10px;
+        background-color: var(--menu1);
+        box-shadow: 0px 1px 5px 1px darkgray;
+    }
+
+    .td-menu-container .td-navigator{
+        width: 100%;
+        height: 50%;
+        text-align: left;
+        margin-top: 20px;
+    }
+
+    .td-navigator .td-ul{
+        width: 90%;
+        padding-left: 20px;
+    }
+
+    .td-navigator .td-ul li{
+        list-style-type: none;
+        padding: 5px;
+        margin-top: 5px;
+        border-radius: 7px;
+        cursor: pointer;
+    }
+
+    @keyframes menuopen {
+        from { margin-left: -180px; }
+        to   { margin-left: 15px; }
+    }
+
+    @keyframes menuclose {
+        from { margin-left: 15px; }
+        to   { margin-left: -180px; }
+    }
+
+    @keyframes containerinc {
+        from { width: 65%; }
+        to   { width: 90%; }
+    }
+
+    @keyframes containerdec {
+        from { width: 90%; }
+        to   { width: 65%; }
+    }
+
+    /* container */
+
+    .td-task-store .empty-tasks {
+        height: 100%;
+        width: 100%;
+        border-radius: 25px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .td-task-container .td-task-store .td-task{
+        width: 85%;
+    }
+
+    .td-task-creator-box .task-creator{
+        width: 300px;
+        height: 40px;
+    }
+
+    .td-task-store .empty-tasks .no-tasks {
+        height: 170px;
+        width: 275px;
+        border: 10px solid white;
+        border-radius: 25px;
+    }
+
+    .td-task-store .empty-tasks .not-found{
+        padding: 20px;
+        font-size: 1.4rem;
+    }
+
+
+    /* classes on switching */
+
+    .td-task-container .on-all-tasks{
+        height: 500px;
+        width: 90%;
+    }
+
+    .td-task-container .on-all-tasks-empty{
+        height: 600px;
+        width: 95%;
+    }
+}
+
+
+
+
+/* mobile view */
+
+@media only screen and (max-width: 599px) and (min-width: 300px){
+    /* header */
+
+    body .td-header{
+        position: fixed;
+    }
+
+    .td-header .td-menu-box{
+        height: 100%;
+        width: 100px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .td-header .td-menu-box .td-menu-logo{
+        height: 25px;
+        width: 25px;
+        margin-left: 10px;
+    }
+
+    .td-header .td-menu-box .td-heading-txt{
+        font-size: 1.4rem;
+        margin-left: 10px;
+        width: fit-content;
+    }
+
+    /* search */
+
+    .td-header .td-search-box{
+        width: 200px;
+    }
+
+    .td-search-box .td-search-bar:hover {
+        width: 180px;
+    }
+
+    .td-search-box .td-search-bar:hover .td-search-input {
+        width: 130px;
+    }
+
+
+
+    /* container */
+
+    .td-task-creator-box .task-creator .add-task-input{
+        width: 80%;
+        font-size: 1.1em;
+        color: var(--secondary2);
+        border: none;
+    }
+
+    /* menu */
+
+    .td-list-container .td-menu-container{
+        width: 170px;
+        margin: 35px 0px 0px -180px;
+        height: calc(100% - 70px);
+        min-height: 600px;
+        border-radius: 10px;
+        background-color: var(--menu1);
+        box-shadow: 0px 1px 5px 1px darkgray;
+    }
+
+    .td-menu-container .td-navigator{
+        width: 100%;
+        height: 50%;
+        text-align: left;
+        margin-top: 20px;
+    }
+
+    .td-navigator .td-ul{
+        width: 90%;
+        padding-left: 20px;
+    }
+
+    .td-navigator .td-ul li{
+        list-style-type: none;
+        padding: 5px;
+        margin-top: 5px;
+        border-radius: 7px;
+        cursor: pointer;
+    }
+
+    @keyframes menuopen {
+        from { margin-left: -180px; }
+        to   { margin-left: 15px; }
+    }
+
+    @keyframes menuclose {
+        from { margin-left: 15px; }
+        to   { margin-left: -180px; }
+    }
+
+    @keyframes containerinc {
+        from { width: 65%; }
+        to   { width: 90%; }
+    }
+
+    @keyframes containerdec {
+        from { width: 90%; }
+        to   { width: 65%; }
+    }
+
+    /* container */
+
+    .td-task-store .empty-tasks {
+        height: 100%;
+        width: 100%;
+        border-radius: 25px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .td-task-container .td-task-store .td-task{
+        width: 85%;
+    }
+
+    .td-task-creator-box .task-creator{
+        width: 300px;
+        height: 40px;
+    }
+
+    .td-task-store .empty-tasks .no-tasks {
+        height: 170px;
+        width: 275px;
+        border: 10px solid white;
+        border-radius: 25px;
+    }
+
+    .td-task-store .empty-tasks .not-found{
+        padding: 20px;
+        font-size: 1.4rem;
+    }
+
+
+    /* classes on switching */
+
+    .td-task-container .on-all-tasks{
+        height: 500px;
+        width: 90%;
+    }
+
+    .td-task-container .on-all-tasks-empty{
+        height: 600px;
+        width: 95%;
+    }
+}
+
+
+
+
 
 
 

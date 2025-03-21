@@ -382,7 +382,7 @@ function TodoActions() {
 
     todoA.toggleCompletion = function (event) {
         let complete = event.target,
-        TaskId = complete.parentElement.id,
+        TaskId = complete.parentElement.parentElement.id,
         AllTasks = TodoS.getTaskData("alltasks"),
         TaskData = AllTasks.filter(task => task.id === TaskId)[0];
       
